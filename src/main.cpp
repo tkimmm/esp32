@@ -25,6 +25,7 @@ String processor(const String& var){
   return String();
 }
 
+// Captive landing 
 class CaptiveRequestHandler : public AsyncWebHandler
 {
 public:
@@ -51,10 +52,11 @@ public:
 
 void setup()
 {
-  //your other setup stuff...
-  WiFi.softAP("dont-join-lol");
+  // AP Access point name 
+  WiFi.softAP("ESP32-WebServer");
   dnsServer.start(53, "*", WiFi.softAPIP());
 
+  // Debug output to serial 
   Serial.begin(115200);
   pinMode(ledPin, OUTPUT);
 
@@ -64,13 +66,14 @@ void setup()
     return;
   }
   // server.addHandler(new CaptiveRequestHandler()).setFilter(ON_AP_FILTER);//only when requested from AP
-  //more handlers...
+  
+  // Routes
   server.on("/", HTTP_GET, [](AsyncWebServerRequest *request){
     request->send(SPIFFS, "/index.html", String(), false, processor);
   });
 
-  server.on("/styles.css", HTTP_GET, [](AsyncWebServerRequest *request){
-    request->send(SPIFFS, "/styles.css", "text/css");
+  server.on("/bulma.min.css", HTTP_GET, [](AsyncWebServerRequest *request){
+    request->send(SPIFFS, "/bulma.min.css", "text/css");
   });
 
   server.on("/index.js", HTTP_GET, [](AsyncWebServerRequest *request){

@@ -1,12 +1,27 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <script src="index.js"></script>
-    </head>
-    <body>
-        <b> State is: %STATE% </b>
-        <button onclick="openAlert()">call JS</button>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ESP32 Async Server</title>
+    <script src="index.js"></script>
+    <link rel="stylesheet" href="bulma.min.css">
+  </head>
+  <body>
+  <section class="section">
+    <div class="container">
+      <h1 class="title">
+        ESP32 Server 
+      </h1>
+      <p class="subtitle">
+        State is: %STATE%
+      </p>
+        <p>
+          <button class="button" onclick="openAlert()">call JS</button>
+        </p>
         <a href="/on" class="button">Call C++ SetState On</a>
         <a href="/off" class="button">Call C++ SetState OFf </a>
-    </body>
+    </div>
+  </section>
+  </body>
 </html>
